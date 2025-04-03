@@ -5,6 +5,7 @@ const TicketForm = ({ onSubmit }) => {
     const [description, setDescription] = useState('');
     const [deadline, setDeadline] = useState('');
     const [teamMember, setTeamMember] = useState('');
+    const [file, setFile] = useState(null);
 
     const teamMembers = [
         { name: 'Alice', skills: ['React', 'NodeJS'] },
@@ -14,15 +15,25 @@ const TicketForm = ({ onSubmit }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:5000/tickets', {
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const fileResponse = await fetch('http://localhost:5000/upload', {
+            method: 'POST',
+            body: formData,
+        });
+        const fileData = await fileResponse.json();
+
+        const ticketResponse = await fetch('http://localhost:5000/tickets', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ title, description, deadline, teamMember }),
+            body: JSON.stringify({ title, description, deadline, teamMember, file: fileData.file }),
         });
-        const data = await response.json();
-        onSubmit(data);
+        const ticketData = await ticketResponse.json();
+        onSubmit(ticketData);
     };
 
     return (
@@ -48,6 +59,10 @@ const TicketForm = ({ onSubmit }) => {
                         </option>
                     ))}
                 </select>
+            </div>
+            <div>
+                <label>Upload File:</label>
+                <input type="file" onChange={(e) => setFile(e.target.files[0])} />
             </div>
             <button type="submit">Submit</button>
         </form>
