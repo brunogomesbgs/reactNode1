@@ -16,7 +16,7 @@ const dbUser = process.env.MONGO_DB_USER;
 const dbPassword = process.env.MONGO_DB_PASSWORD;
 
 // MongoDB connection
-const mongoURI = `mongodb+srv://${dbUser}:${dbPassword}@brunosilvadevdb.dbnhrcv.mongodb.net/?retryWrites=true&w=majority&appName=BrunoSilvaDevDB`;
+const mongoURI = `mongodb+srv://bugbgs:${dbPassword}@brunosilvadevdb.dbnhrcv.mongodb.net/?retryWrites=true&w=majority&appName=BrunoSilvaDevDB`;
 const conn = mongoose.createConnection(mongoURI);
 
 // Init gfs
