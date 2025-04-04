@@ -7,8 +7,7 @@ mounts:
     source_path: uploads
 hooks:
   build: |
-    npm run setup-assets
-    npm run build
+    npm run start
 web:
   commands:
     start: node index.js
