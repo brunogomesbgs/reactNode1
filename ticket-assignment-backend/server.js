@@ -7,12 +7,16 @@ const multer = require('multer');
 const { GridFsStorage } = require('multer-gridfs-storage');
 const path = require('path');
 const feedbackRoutes = require('./routes/feedback');
+require('dotenv').config();
 
 const app = express();
 var cors = require('cors');
 
+const dbUser = process.env.MONGO_DB_USER;
+const dbPassword = process.env.MONGO_DB_PASSWORD;
+
 // MongoDB connection
-const mongoURI = 'mongodb+srv://bugbgs:Aq2W8NQbUzDV01EP@brunosilvadevdb.dbnhrcv.mongodb.net/?retryWrites=true&w=majority&appName=BrunoSilvaDevDB';
+const mongoURI = `mongodb+srv://${dbUser}:${dbPassword}Aq2W8NQbUzDV01EP@brunosilvadevdb.dbnhrcv.mongodb.net/?retryWrites=true&w=majority&appName=BrunoSilvaDevDB`;
 const conn = mongoose.createConnection(mongoURI);
 
 // Init gfs
