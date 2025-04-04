@@ -12,7 +12,7 @@ const app = express();
 var cors = require('cors');
 
 // MongoDB connection
-const mongoURI = 'mongodb://bugbgs:Aq2W8NQbUzDV01EP@brunosilvadevdb.dbnhrcv.mongodb.net/?retryWrites=true&w=majority&appName=BrunoSilvaDevDB';
+const mongoURI = 'mongodb+srv://bugbgs:Aq2W8NQbUzDV01EP@brunosilvadevdb.dbnhrcv.mongodb.net/?retryWrites=true&w=majority&appName=BrunoSilvaDevDB';
 const conn = mongoose.createConnection(mongoURI);
 
 // Init gfs
