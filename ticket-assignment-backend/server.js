@@ -9,9 +9,10 @@ const path = require('path');
 const feedbackRoutes = require('./routes/feedback');
 
 const app = express();
+var cors = require('cors');
 
 // MongoDB connection
-const mongoURI = 'your_mongodb_credential';
+const mongoURI = 'mongodb://your_mongodb_credential';
 const conn = mongoose.createConnection(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Init gfs
@@ -36,6 +37,7 @@ const upload = multer({ storage });
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use('/feedback', feedbackRoutes);
+app.use(cors())
 
 let tickets = [];
 const teamMembers = [

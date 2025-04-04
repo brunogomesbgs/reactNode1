@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Feedback = require('../models/Feedback');
+const Feedback = require('../model/Feedback');
 
 // Create feedback
 router.post('/', async (req, res) => {
