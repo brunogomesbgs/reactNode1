@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 const FeedbackForm = ({ ticketId, version, onSubmit }) => {
     const [annotations, setAnnotations] = useState('');
     const [feedback, setFeedback] = useState('');
+    const url = 'http://localhost:5000';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:5000/feedback', {
+        const response = await fetch(`${url}/feedback`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

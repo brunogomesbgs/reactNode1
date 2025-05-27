@@ -1,2 +1,4 @@
 MONGO_DB_PASSWORD=enter_your_password
 MONGO_DB_USER=enter_your_credential
+MONGO_DB_HOST=enter_your_mongo_db_host
+MONGO_DB_APP_NAME=enter_your_mongo_app_name

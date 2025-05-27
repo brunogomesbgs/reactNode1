@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 const FeedbackList = ({ ticketId, version }) => {
     const [feedback, setFeedback] = useState([]);
+    const url = 'http://localhost:5000';
 
     useEffect(() => {
         const fetchFeedback = async () => {
-            const response = await fetch(`http://localhost:5000/feedback/${ticketId}/${version}`);
+            const response = await fetch(`${url}/feedback/${ticketId}/${version}`);
             const data = await response.json();
             setFeedback(data);
         };

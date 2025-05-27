@@ -6,6 +6,7 @@ const TicketForm = ({ onSubmit }) => {
     const [deadline, setDeadline] = useState('');
     const [teamMember, setTeamMember] = useState('');
     const [file, setFile] = useState(null);
+    const url = 'http://localhost:5000';
 
     const teamMembers = [
         { name: 'Alice', skills: ['React', 'NodeJS'] },
@@ -19,13 +20,13 @@ const TicketForm = ({ onSubmit }) => {
         const formData = new FormData();
         formData.append('file', file);
 
-        const fileResponse = await fetch('http://localhost:5000/upload', {
+        const fileResponse = await fetch(`${url}/upload`, {
             method: 'POST',
             body: formData,
         });
         const fileData = await fileResponse.json();
 
-        const ticketResponse = await fetch('http://localhost:5000/tickets', {
+        const ticketResponse = await fetch(`${url}/tickets`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -14,9 +14,11 @@ var cors = require('cors');
 
 const dbUser = process.env.MONGO_DB_USER;
 const dbPassword = process.env.MONGO_DB_PASSWORD;
+const dbHost =  process.env.MONGO_DB_HOST;
+const dbApp = process.env.MONGO_DB_APP_NAME;
 
 // MongoDB connection
-const mongoURI = `mongodb+srv://${dbUser}:${dbPassword}@brunosilvadevdb.dbnhrcv.mongodb.net/?appName=BrunoSilvaDevDB`;
+const mongoURI = `mongodb+srv://${dbUser}:${dbPassword}@${dbHost}.dbnhrcv.mongodb.net/?appName=${dbApp}`;
 const conn = mongoose.createConnection(mongoURI);
 
 // Init gfs
